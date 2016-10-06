@@ -1,0 +1,41 @@
+{
+  "name": "math.interval",
+  "version": "0.1.0",
+  "description": "Class to work with intervals of real numbers.",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint ./**/*.js",
+    "mocha": "mocha test/**/*_test.js",
+    "test": "npm run lint && npm run mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xgbuils/math.interval.git"
+  },
+  "keywords": [
+    "interval",
+    "real",
+    "union",
+    "contains",
+    "maths",
+    "mathematics"
+  ],
+  "author": "Xavier Garcia Buils <xgbuils@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xgbuils/math.interval/issues"
+  },
+  "homepage": "https://github.com/xgbuils/math.interval#readme",
+  "dependencies": {
+    "math.interval-utils": "^0.1.0",
+    "type-verify": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.7.0",
+    "mocha": "^3.1.0"
+  }
+}
