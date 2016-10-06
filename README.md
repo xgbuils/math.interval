@@ -18,7 +18,7 @@ var interval = new Interval('(1, 5)')
 
 interval.isEmpty() // false
 interval.contains(4) // true
-interval.contains('[2, 3') // true
+interval.contains('[2, 3)') // true
 interval.union('[8, 9)') // [new Interval('(1, 5)'), new Interval('[8, 9)')]
 interval.union('(4, 6])') // [new Interval('(1, 6]')]
 
@@ -27,5 +27,88 @@ isolatedInterval.isEmpty() // false
 interval.contains(isolatedInterval) // true
 ```
 
-## License
+## API
+
+### Interval
+#### constructor(interval)
+
+Constructor creates an instance of Interval class. `contains` throws an exception if `interval` is not [IterumCastable](#iterumcastable)
+
+#### Interval#isEmpty()
+
+It returns true or false if interval is empty or not.
+
+Example:
+``` javascript
+var Interval = require('math.interval')
+
+var new Interval('[2, 4)')
+
+interval.isEmpty() // returns false
+```
+
+#### Interval#contains(interval)
+It returns `true` or `false` if instance contains `interval` passed by parameter. `contains` throws an exception if `interval` is not [IterumCastable](#iterumcastable)
+
+Example:
+``` javascript
+var Interval = require('math.interval')
+
+var interval = new Interval('[1, 3)')
+
+interval.contains('(1, 2)') // returns true
+interval.contains(new Interval('[5, 6]'))
+```
+
+#### Interval#union(...intervals)
+It returns an array of minimum disjoint intervals that represents the union of instance of interval with `intervals` passed by parameter.
+
+``` javascript
+var Interval = require('math.interval')
+
+var interval = new Interval('[1, 3)')
+
+interval.union('(2, 4)', '{5}', '(5, 6)')
+// returns [new Interval('[1, 4)'), new Interval('[5, 6)')]
+```
+
+#### Interval.union(...intervals)
+Interval also has static method that calculates the union of intervals in the same way as `union` method.
+
+``` javascript
+var Interval = require('math.interval')
+
+Interval.union('[1, 3)', '(2, 4)', '{5}', '(5, 6)')
+// returns [new Interval('[1, 4)'), new Interval('[5, 6)')]
+```
+
+### IntervalCastable
+A value is IntervalCastable if it is one of this list of types:
+- instance of `Interval`.
+- string that parses with interval (`'[2, 5]'`, `'[0, 5)'`, `'{3}'`, `'(-2, 1)'`, etc).
+- [data structure](https://github.com/xgbuils/math.interval-utils) defined in `math.interval-utils` package.
+
+### Exported functions
+
+#### rawInterval(interval)
+It converts Interval instance to interval [data structure](https://github.com/xgbuils/math.interval-utils) defined in `math.interval-utils` package. It is posible to import this function thus:
+
+``` javascript
+var rawInterval = require('math.interval/src/raw-interval.js')
+```
+
+#### cast(interval)
+It converts IntervalCastable value to interval [data structure](https://github.com/xgbuils/math.interval-utils) defined in `math.interval-utils` package. It is posible to import this function thus:
+
+``` javascript
+var rawInterval = require('math.interval/src/cast.js')
+```
+
+``` javascript
+var rawInterval = require('math.interval/src/raw-interval.js')
+```
+
+
+
+## LICENSE
 MIT
