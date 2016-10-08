@@ -1,6 +1,6 @@
 {
   "name": "math.interval",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Class to work with intervals of real numbers.",
   "main": "src/index.js",
   "directories": {
