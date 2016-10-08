@@ -1,7 +1,6 @@
 var typeVerify = require('type-verify')
 var intervalUtils = require('math.interval-utils')
 var cast = require('./cast')
-var IntervalFactory = require('./factory.js')
 var rawInterval = require('./raw-interval.js')
 
 var isEmpty = intervalUtils.isEmpty
@@ -14,7 +13,9 @@ function Interval (e) {
     if (result === e) {
         throw new Error(e + ' is not castable to Interval')
     }
-    IntervalFactory(Interval)(result, this)
+    Object.defineProperty(this, 'interval', {
+        value: result
+    })
 }
 
 Interval.union = function () {
@@ -26,7 +27,9 @@ Interval.union = function () {
         return result
     })
 
-    return union(arr).map(IntervalFactory(Interval))
+    return union(arr).map(function (interval) {
+        return new Interval(interval)
+    })
 }
 
 Object.defineProperties(Interval.prototype, {
