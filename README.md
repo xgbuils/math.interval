@@ -82,6 +82,21 @@ Interval.union('[1, 3)', '(2, 4)', '{5}', '(5, 6)')
 // returns [new Interval('[1, 4)'), new Interval('[5, 6)')]
 ```
 
+#### Interval#toString()
+It returns an string with a expression representation of interval
+
+``` javascript
+var Interval = require('math.interval')
+
+var a = new Interval('(2, 5]')
+var b = new Interval('(5, 2]') // empty
+var c = new Interval('[2, 2]') // singleton interval
+
+a.toString() // '(2, 5]'
+b.toString() // '{}'
+c.toString() // '{2}'
+```
+
 ### IntervalCastable
 A value is IntervalCastable if it is one of this list of types:
 - instance of `Interval`.
