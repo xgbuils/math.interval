@@ -125,4 +125,26 @@ describe('Interval', function () {
             expect(interval.isEmpty()).to.be.equal(false)
         })
     })
+
+    describe('.toString', function () {
+        it('it returns \'{}\' if it is passed empty interval', function () {
+            var interval = new Interval('[2, 0)')
+            expect(interval.toString()).to.be.equal('{}')
+        })
+
+        it('it returns \'{4}\' if it is passed a singleton interval with value 4', function () {
+            var interval = new Interval('[4, 4]')
+            expect(interval.toString()).to.be.equal('{4}')
+        })
+
+        it('it returns \'(4, 5]\' if it is passed an interval (4, 5]', function () {
+            var interval = new Interval('(4, 5]')
+            expect(interval.toString()).to.be.equal('(4, 5]')
+        })
+
+        it('it returns \'[-2, 0)\' if it is passed an interval [-2, 0)', function () {
+            var interval = new Interval('[-2, 0)')
+            expect(interval.toString()).to.be.equal('[-2, 0)')
+        })
+    })
 })

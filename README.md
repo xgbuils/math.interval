@@ -3,7 +3,7 @@
 Class to work with intervals of real numbers.
 
 ## Version
-0.1.0
+0.1.1
 
 ## Install
 ``` bash
@@ -32,7 +32,7 @@ interval.contains(isolatedInterval) // true
 ### Interval
 #### constructor(interval)
 
-Constructor creates an instance of Interval class. `contains` throws an exception if `interval` is not [IterumCastable](#iterumcastable)
+Constructor creates an instance of Interval class. it throws an exception if `interval` is not [IntervalCastable](#intervalcastable)
 
 #### Interval#isEmpty()
 
@@ -48,7 +48,7 @@ interval.isEmpty() // returns false
 ```
 
 #### Interval#contains(interval)
-It returns `true` or `false` if instance contains `interval` passed by parameter. `contains` throws an exception if `interval` is not [IterumCastable](#iterumcastable)
+It returns `true` or `false` if instance contains `interval` passed by parameter. `contains` throws an exception if `interval` is not [IntervalCastable](#intervalcastable)
 
 Example:
 ``` javascript
@@ -57,7 +57,7 @@ var Interval = require('math.interval')
 var interval = new Interval('[1, 3)')
 
 interval.contains('(1, 2)') // returns true
-interval.contains(new Interval('[5, 6]'))
+interval.contains(new Interval('[5, 6]')) // returns false
 ```
 
 #### Interval#union(...intervals)
@@ -103,12 +103,6 @@ It converts IntervalCastable value to interval [data structure](https://github.c
 ``` javascript
 var rawInterval = require('math.interval/src/cast.js')
 ```
-
-``` javascript
-var rawInterval = require('math.interval/src/raw-interval.js')
-```
-
-
 
 ## LICENSE
 MIT

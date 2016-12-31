@@ -57,6 +57,25 @@ Object.defineProperties(Interval.prototype, {
             intervals.push.apply(intervals, arguments)
             return Interval.union.apply(null, intervals)
         }
+    },
+
+    toString: {
+        value: function () {
+            var interval = rawInterval(this)
+            var left = interval[0]
+            var right = interval[1]
+            var leftVal = left.value
+            var rightVal = right.value
+            if (this.isEmpty()) {
+                return '{}'
+            } else if (leftVal === rightVal) {
+                return '{' + leftVal + '}'
+            } else {
+                var leftPar = left.limit ? '(' : '['
+                var rightPar = right.limit ? ')' : ']'
+                return leftPar + leftVal + ', ' + rightVal + rightPar
+            }
+        }
     }
 })
 
